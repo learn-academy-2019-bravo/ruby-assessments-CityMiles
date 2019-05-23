@@ -1,50 +1,137 @@
 # Ruby Assessments
 
-#### 1. Use two different Ruby loops to loop over this array, multiplying each element by 2.
+##### 1. Use two different Ruby loops to loop over this array, multiplying each element by 2.
+
 
 tempArray = [1, 2, 6, 9, 3, 21]
 
-# your ruby loop here
+tempArray.each do |el|
+    puts el * 2
+end
+
+# 2
+# 4
+# 12
+# 18
+# 6
+# 42
+# returns => [2, 4, 12, 18, 6, 42]
 
 
-#### 2. From all the built in Ruby methods we've seen in class this week, choose three that you think are particularly helpful and create examples to show how they work.
+puts tempArray.map { |el| el * 2 }
 
-# your three built in ruby methods
+# 2
+# 4
+# 12
+# 18
+# 6
+# 42
+# returns => [2, 4, 12, 18, 6, 42]
 
 
-#### 3. Create a method that takes in a sentence and returns a new sentence with the first letter of each word capitalized.
+
+##### 2. From all the built in Ruby methods we've seen in class this week, choose 3 that are particularly helpful and create examples to show how they work.
+
+# Hash Method ... these are cool!
+
+learn_cohorts = { "Alpha" => 21, "Bravo" => 14 }
+
+learn_cohorts.each {|key, value| puts "The 2019 #{key} cohort has a student body of #{value}." }
+
+# The 2019 Alpha cohort has a student body of 21.
+# The 2019 Bravo cohort has a student body of 14.
+
+
+# Array Rotate ... these are cool!
+
+padres_lineup = ['Greg Garcia', 'Alex Dickerson', 'Manny Machado', 'Eric Hosmer', 'Hunter Renfroe','Austin Allen', 'Wil Myers', 'Ty France']
+
+p padres_lineup.rotate
+p padres_lineup.rotate(2)
+p padres_lineup.rotate(3)
+
+padres_lineup << "New Player"
+
+p padres_lineup
+
+# ["Alex Dickerson", "Manny Machado", "Eric Hosmer", "Hunter Renfroe", "Austin Allen", "Wil Myers", "Ty France", "Greg Garcia"]
+# ["Manny Machado", "Eric Hosmer", "Hunter Renfroe", "Austin Allen", "Wil Myers", "Ty France", "Greg Garcia", "Alex Dickerson"]
+# ["Eric Hosmer", "Hunter Renfroe", "Austin Allen", "Wil Myers", "Ty France", "Greg Garcia", "Alex Dickerson", "Manny Machado"]
+# ["Greg Garcia", "Alex Dickerson", "Manny Machado", "Eric Hosmer", "Hunter Renfroe", "Austin Allen", "Wil Myers", "Ty France", "New Player"]
+
+
+
+##### 3. Create a method that takes in a sentence and returns a new sentence with the first letter of each word capitalized.
 
 sentence = "hello there, how are you?"
-expected output = "Hello There, How Are You?"
+new_capp = sentence.split(' ')
 
-#### 4.  Create a method that takes in a string and returns a new string with all the vowels removed. HINT:  there's a built in string method for this
+new_capp.each() do |element|
+    print element.capitalize + ' '
+end
 
-no_vowels = "I have no vowels"
-expected output = " hv n vwls"
+# Hello There, How Are You?
 
 
-#### 5. Look at this horrible ruby code, and fix it to be good ruby code.
 
-``` ruby
-class example
+##### 4. Create a method that takes in a string and returns a new string with all the vowels removed. HINT: there's a built in string method for this.
+
+no_vowels = 'I have no vowels'
+
+def vowel_owl(string)
+    string.delete('aeiouAEIOU')
+end
+
+p vowel_owl(no_vowels)
+
+# " hv n vwls"
+
+
+
+##### 5. Look at this horrible ruby code, and fix it to be good ruby code.
+
+class Example
+
   def initialize(day)
     @day=day
   end
 
-  def Say_hi
-    if(day == "Friday"){
+  def say_hi()
+
+    if day == "Friday"
       puts "TGIF!"
-    }
-    elseif(day == "Monday"){
-      puts "Its monday again"
-    }
+
+    elsif day == "Monday"
+      puts "Eesh it's Monday again"
+
     else
-      puts "another day"
+      puts "Whatev, just another day"
+
+    end
   end
 end
-```
-#### 6a.  Create a class called Animal that initializes with a color.  Create a method in the class called legs that returns 4.
 
-# your class here
 
-#### 6b.  Create a new instance of an Animal with a brown color.  Return how many legs the animal has.
+
+##### 6a.  Create a class called Animal that initializes with a color.  Create a method in the class called legs that returns 4.
+
+class Animal
+   def initialize(color)
+       @color = color
+   end
+
+   def legs()
+        puts 4
+   end
+end
+
+
+
+##### 6b.  Create a new instance of an Animal with a brown color.  Return how many legs the animal has.
+
+dog = Animal.new('brown')
+p dog
+# <Animal:0x00000000030b4728 @color="brown">
+
+p dog.legs
+# 4
