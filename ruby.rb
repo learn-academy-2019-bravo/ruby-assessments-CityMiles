@@ -18,6 +18,17 @@ end
 # returns => [2, 4, 12, 18, 6, 42]
 
 
+tempArray.each_with_index() { |element, index| puts element * 2 }
+
+# 2
+# 4
+# 12
+# 18
+# 6
+# 42
+# returns => [2, 4, 12, 18, 6, 42]
+
+
 puts tempArray.map { |el| el * 2 }
 
 # 2
@@ -32,27 +43,46 @@ puts tempArray.map { |el| el * 2 }
 
 ##### 2. From all the built in Ruby methods we've seen in class this week, choose 3 that are particularly helpful and create examples to show how they work.
 
-# Hash Method ... these are cool!
+## Hash Method ... these are cool!
 
-learn_cohorts = { "Alpha" => 21, "Bravo" => 14 }
+learn_cohorts = { 'Alpha' => 21, 'Bravo' => 14, 'Charlie' => '???' }
 
-learn_cohorts.each {|key, value| puts "The 2019 #{key} cohort has a student body of #{value}." }
+def method_man(array)
+    array.each {|key, value| puts "The 2019 #{key} cohort has a student body of #{value}." }
+end
+
+p method_man(learn_cohorts)
 
 # The 2019 Alpha cohort has a student body of 21.
 # The 2019 Bravo cohort has a student body of 14.
+# The 2019 Charlie cohort has a student body of ???.
 
 
-# Array Rotate ... these are cool!
+
+## Array Rotate ... these are cool!
 
 padres_lineup = ['Greg Garcia', 'Alex Dickerson', 'Manny Machado', 'Eric Hosmer', 'Hunter Renfroe','Austin Allen', 'Wil Myers', 'Ty France']
 
 p padres_lineup.rotate
 p padres_lineup.rotate(2)
 p padres_lineup.rotate(3)
-
 padres_lineup << "New Player"
 
 p padres_lineup
+
+# ABOVE AND BELOW ARE THE SAME, RUN SEPARATELY FOR CLARITY!
+
+def batters_box(array)
+
+    puts array.rotate
+    puts array.rotate(2)
+    puts array.rotate(3)
+    array << "New Player"
+    puts array
+
+end
+
+p batters_box(padres_lineup)
 
 # ["Alex Dickerson", "Manny Machado", "Eric Hosmer", "Hunter Renfroe", "Austin Allen", "Wil Myers", "Ty France", "Greg Garcia"]
 # ["Manny Machado", "Eric Hosmer", "Hunter Renfroe", "Austin Allen", "Wil Myers", "Ty France", "Greg Garcia", "Alex Dickerson"]
